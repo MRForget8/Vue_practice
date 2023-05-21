@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+</head>
+<body>
+    <div id="root">
+        <h2>School name : {{name}}</h2>
+        <h2>School adress : {{adress}}</h2>
+    </div>
+</body>
+<script type="text/javascript">
+    Vue.config.productionTip = false;
+
+    const vm = new Vue({
+        el:'#root',
+        data:{
+        name: 'atguigu',
+        adress: 'Beijing',
+        }
+    })
+</script>
+</html>

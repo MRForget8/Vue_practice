@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>回顾Object.defineProperty方法</title>
+</head>
+<body>
+    <script type="text/javascript">
+        let person={
+            name: 'zhangsan ',
+            sex: 'man'
+        }
+
+        Object.defineProperty(person,'age', {value:18});
+        console.log(person);
+    </script>
+</body>
+</html>
