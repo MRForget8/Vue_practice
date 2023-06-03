@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+</head>
+<body>
+    <div id="root">
+        <h2>Today's weather is {{info}},{{x}}</h2>
+        <button @click="changeWeather">切换天气</button>
+    </div>
+</body>
+
+<script type="text/javascript">
+    Vue.config.productionTip = false 
+
+    new Vue({
+        el:'#root',
+        data:{
+            isHot:true,
+            x:1
+        },
+        computed:{
+            info(){
+                return this.isHot ? 'Hot' : 'Cold'
+            }
+        },
+        methods: {
+            changeWeather(){
+                this.isHot = !this.isHot;
+                this.x++;
+            }
+        },
+    })
+</script>
+</html>

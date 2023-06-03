@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>2.3.天气案例_深度监视</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+</head>
+<body>
+    <div id="root">
+        <h2>Today's weather is {{info}}</h2>
+        <button @click="changeWeather">切换天气</button>
+    </div>
+</body>
+
+<script type="text/javascript">
+    Vue.config.productionTip = false 
+
+    const vm = new Vue({
+        el:'#root',
+        data:{
+            isHot:true,
+        },
+        computed:{
+            info(){
+                return this.isHot ? 'Hot' : 'Cold'
+            }
+        },
+        methods: {
+            changeWeather(){
+                this.isHot = !this.isHot;
+            }
+        },
+        watch:{
+            //正常写法
+            // isHot:{
+            //     //深度监视
+            //     // deep:true,
+            //     //初始化时让handler调用一下
+            //     // immediate:true,
+            //     //handler什么时候调用？当isHot发生改变时。
+            //     handler(newValue,oldValue){
+            //         console.log('isHot have been repit',newValue,oldValue)
+            //      }
+            // },
+            //简写
+            // isHot(newValue,oldValue){
+            //     console.log('isHot have been repit',newValue,oldValue)
+            // }
+        }
+
+    }) 
+    vm.$watch('isHot',function(newValue,oldValue){
+        console.log('is hot have been repit',newValue,oldValue)
+    })
+
+</script>
+</html> 

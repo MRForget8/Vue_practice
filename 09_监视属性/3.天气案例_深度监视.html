@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>2.3.天气案例_深度监视</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+</head>
+<body>
+    <div id="root">
+        <h2>Today's weather is {{info}},{{x}}</h2>
+        <button @click="changeWeather">切换天气</button>
+        <hr />
+        <h3>a is : {{numbers.a}}</h3>
+        <button @click="numbers.a++">touch me let a++</button>
+        <hr/>
+        <h3>b is : {{numbers.b}}</h3>
+        <button @click="numbers.b++">touch me let b++</button>
+    </div>
+</body>
+
+<script type="text/javascript">
+    Vue.config.productionTip = false 
+
+    const vm = new Vue({
+        el:'#root',
+        data:{
+            isHot:true,
+            numbers:{
+                a : 1,
+                b : 1,
+            },
+            x : 1,
+        },
+        computed:{
+            info(){
+                return this.isHot ? 'Hot' : 'Cold'
+            }
+        },
+        methods: {
+            changeWeather(){
+                this.isHot = !this.isHot;
+                this.x++;
+            }
+        },
+        watch:{
+            isHot:{
+                //初始化时让handler调用一下
+                //immediate:true,
+                //handler什么时候调用？当isHot发生改变时。
+                handler(newValue,oldValue){
+                    console.log('isHot have been repit',newValue,oldValue)
+                }
+            },
+            //监视多级结构中某个属性的变化
+            // 'number.a':{
+            //     handler(){
+            //         console.log('a has been changed')
+            //     }
+            // }
+            //监视多级结构中所有属性的变化
+            numbers:{
+                deep:true,
+                handler(){
+                    console.log('numbers has been changed')
+                },
+            },
+            
+        },
+
+    }) 
+
+
+</script>
+</html> 
