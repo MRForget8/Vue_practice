@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dome_03</title>
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+    <div id="box">
+        {{mytext}}
+
+        <div v-html="mytext"></div>
+    </div>
+</body>
+<script>
+    new Vue({
+        el:'#box',
+        data:{
+            mytext:"<b>加粗的</b>"
+        },
+    })
+</script>
+</html>

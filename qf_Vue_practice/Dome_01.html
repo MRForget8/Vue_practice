@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+    <style>
+        .red{
+            background-color: red;
+        }
+        .yellow{
+            background-color: yellow;
+        }
+    </style>
+</head>
+<body>
+    <div id="root">
+        <span>{{name}}</span>
+        
+        <button @click="handleChange()">touchme</button>
+        <div v-show="isshow">AAAAA</div>
+        <div v-if="isCreate">BBBBB</div>
+        <div :class="whichColor">I can change my color</div>
+        <div :class="changeColor? 'red':'yellow'">I also can change my color</div>
+        <ul>
+            <li v-for="(item,index) in List">
+                {{item}}-{{index}}
+            </li>
+        </ul>
+        <img :src="imgpath"/>
+    </div>
+</body>
+<script type="text/javascript">
+    new Vue({
+        el:"#root",
+        data:{
+            name:'jack',
+            isshow:false,
+            isCreate:false,
+            whichColor:'red',
+            changeColor:false,
+            imgpath:"",
+
+            List:["aaaaa","bbbbb","cccccc","dddddd"]
+        },
+        methods:{
+            handleChange(){
+                this.isshow = !this.isshow
+                this.isCreate = !this.isCreate
+                this.whichColor = 'yellow'
+                this.changeColor = !this.changeColor
+                this.imgpath = 'src="chrome://favicon2/?size=24&scaleFactor=1x&showFallbackMonogram=&pageUrl=https%3A%2F%2Fwww.baidu.com%2F"'
+            }
+        }
+
+    })
+</script>
+</html>

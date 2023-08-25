@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+</head>
+<body>
+    <div id="root">
+        <h2>Wellcome to {{name}} study</h2>
+        <button @click="showInfo1"> touch me </button>
+        <button @click="showInfo2(66,$event)"> touch me too</button>
+    </div>
+</body>
+
+<script type="text/javascript">
+    Vue.config.productionTip = false;
+
+    new Vue ({
+        el:'#root',
+        data:{
+            name: 'atguigu'
+        }, 
+        methods:{
+            showInfo1(event){
+             //   console.log(event.target.innerText);
+             // console.log(this);此处的this是vm
+            alert('Hello,student!');
+            },
+            showInfo2(number,a){
+                //console.log(event.target.innerText);
+                console.log(number,a);
+                //alart('Hello,student!!')    
+            }
+        }
+    })
+</script>
+</html>

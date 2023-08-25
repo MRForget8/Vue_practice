@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+    <style>
+        *{
+            margin-top: 20px;
+        }
+        .dome1{
+            height: 50px;
+            background-color: skyblue;
+        }
+        .box1{
+            padding: 5px;
+            background-color: skyblue;
+        }
+        .box2{
+            padding : 5px;
+            background-color: orange;
+        }
+        .list{
+            width: 200px;
+            height: 200px;
+            background-color: peru;
+            overflow:auto;
+        }
+        li{
+            height: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div id="root">
+        <h2>Wellcome to {{name}} study</h2>
+         <!-- 阻止默认事件 -->
+        <a href="http://www.atguigu.com" @click.prevent="showInfor"> Touch me </a>
+        <!-- 阻止事件冒泡 -->
+        <div class="dome1" @click="showInfor">
+            <button @click.stop="showInfor">Touch me to request</button>
+        </div>
+        <!-- 事件只触发一次 -->
+            <button @click.once="showInfor">Touch me to request</button>
+        <!-- 使用事件的捕获模式    -->
+        <div class="box1" @click.capture="showMsg(1)">
+            div1
+            <div class="box2" @click="showMsg(2)">
+                div2
+            </div>
+        </div>
+
+        <!-- 只有enent.target是当前操作元素时才触发的事件 -->
+        <div class="dome1" @click.self="showInfor">
+            <button @click="showInfor">Touch me to request</button>
+        </div>
+
+        <!-- 事件的默认行为立即执行，无需等待事件回调执行完毕 -->
+        <ul @scroll.passive="demo" class="list">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+        </ul>
+    </div>
+</body>
+<script type="text/javascript">
+    Vue.config.productionTip = false;
+
+    new Vue({
+        el:'#root',
+        data:{
+            name:'atguugu',
+        },
+        methods:{
+            showInfor(e){
+                alert('Hi budy!')
+            },
+            showMsg(msg){
+                console.log(msg)
+            },
+            demo(){
+                for(let i=0;i<10000;i++) {
+                    console.log("#")
+                }
+                console.log('finished');
+            }
+        }
+    })
+</script>
+</html>
