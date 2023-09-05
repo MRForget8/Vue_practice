@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demo_07</title>
+    <script src="../js/vue.global.js"></script>
+</head>
+<body>
+    <div  id="box">
+        {{10+20}}
+        {{name}}
+    </div>
+    <div id="box1">
+        {{mytext}}
+        <input type="text" v-model="mytext">
+        <button @click="handlAdd">ADD</button>
+    </div>
+
+</body>
+
+<script>
+
+    var obj = {
+        //函数式
+        data() {
+            return {
+                name:"Xmz",
+            }
+        },
+        methods: {
+            
+        },
+    }
+    var obj1 = {
+        data() {
+            return {
+                mytext:"hello",
+            }
+        },
+        methods:{
+            handlAdd() {
+                console.log("add",this.mytext);
+            },
+        }
+    }
+    Vue.createApp(obj).mount("#box")
+    Vue.createApp(obj1).mount("#box1")
+</script>
+</html>

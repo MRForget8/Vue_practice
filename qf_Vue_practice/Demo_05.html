@@ -5,8 +5,57 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script src="../js/vue.js"></script>
+    <style>
+        .aa{
+            
+        }
+        .bb{
+
+        }
+        .cc{
+
+        }
+        .dd{
+
+        }
+    </style>
 </head>
 <body>
-    
+    <div id="box">
+        <div :class="classobj">动态切换class-1-对象</div>
+        <div :class="classarr">动态切换class-2-数组</div>
+
+        <div :style="styleobj">动态切换style-1-对象</div>
+        <div :style="stylearr">动态切换style-2-数组</div>
+    </div>
 </body>
+<script>
+    var vm = new Vue({ 
+        el:'#box',
+        data:{
+            classobj:{
+                aa:true,
+                bb:true,
+                cc:false
+            },
+            classarr:["aa","bb"],
+            styleobj:{
+                backgroundColor:'red',
+            },
+            stylearr:[{backgroundColor:"skyblue"}]
+        }
+    })
+
+    //vue2解决方案，Vue.set(对象，属性，true)
+
+    //vue3支持动态增加属性的拦截
+
+    /*为了防止在Vue2种功能受限导致的属性拦截失败，所有都可以选择Vue.set(对象，属性，参数)，这样的形式来完成（个人理解）*/
+
+    //数组感觉比较好一些，没有动态拦截不到这种
+
+    
+
+
+</script>
 </html>
