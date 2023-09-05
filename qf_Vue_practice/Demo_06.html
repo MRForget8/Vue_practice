@@ -10,6 +10,8 @@
     <div  id="box">
         {{10+20}}
         {{name}}
+        <div :class="classobj">动态切换class-对象写法</div>
+        <button @click="Add">Add</button>
     </div>
     <div id="box1">
         {{mytext}}
@@ -26,10 +28,17 @@
         data() {
             return {
                 name:"Xmz",
+                classobj:{
+                    aa:true,
+                    bb:true,
+                    cc:false,
+                }
             }
         },
         methods: {
-            
+            Add(){
+                this.classobj.dd=true;
+            }
         },
     }
     var obj1 = {
